@@ -1,3 +1,7 @@
+#uvicorn main:app                ЗАПУСК ПРИЛОЖЕНИЯ
+# main.py
+# pip install python-multipart
+
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import csv
@@ -24,16 +28,16 @@ app.add_middleware(
 
 # ====== КРИТИЧЕСКИ ВАЖНО: ПРАВИЛЬНЫЕ ПУТИ ======
 # Путь к рекомендательной системе
-RECOM_SCRIPT = Path("D:/123/dipl/dipl/Recom_sys_SVD_save_to_file2.py")
+RECOM_SCRIPT = Path("D:/123/dipl/Recom_sys_SVD_save_to_file2.py")
 
 # Рабочая директория для запуска (где лежат ratings.csv, products_with_emotions.csv)
 RECOM_WORKDIR = RECOM_SCRIPT.parent
 
 # Путь к файлу результатов
-RESULT_FILE = Path("D:/123/API/API/data/result.csv")
+RESULT_FILE = Path("D:/123/API/data/result.csv")
 
 # Путь к интерпретатору рекомендательной системы
-RECOM_INTERPRETER = Path("D:/123/dipl/dipl/venv/Scripts/python.exe")
+RECOM_INTERPRETER = Path("D:/123/dipl/venv/Scripts/python.exe")
 # ==============================================
 
 @app.get("/moods", summary="Список доступных настроений")

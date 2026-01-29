@@ -1,6 +1,6 @@
 import pandas as pd
 
-# ========== МАППИНГ ЖАНРОВ → ЭМОЦИЙ (КОРРЕКТНЫЙ) ==========
+# ========== МАППИНГ ЖАНРОВ → ЭМОЦИЙ ==========
 genre_to_emotion = {
     'Comedy': 'веселое',
     'Drama': 'эмоциональное',
@@ -27,36 +27,17 @@ genre_to_emotion = {
 }
 
 def genres_to_emotions(genres_str):
-    """Преобразует строку жанров в строку эмоций с учётом приоритетов"""
+    """Преобразует строку жанров в строку эмоций"""
     if not isinstance(genres_str, str) or genres_str == '(no genres listed)':
         return 'нейтральное'
     
     genres = [g.strip() for g in genres_str.split('|')]
     emotions = set()
     
-    # ПРАВИЛО 1: Комедия имеет АБСОЛЮТНЫЙ приоритет (удаляет все остальные эмоции)
-    if 'Comedy' in genres:
-        return 'веселое'
-    
-    # ПРАВИЛО 2: Хоррор → только "страшное" (без смешения с напряжённым)
-    if 'Horror' in genres:
-        emotions.add('страшное')
-        # Удаляем конфликтующие жанры
-        genres = [g for g in genres if g not in ['Thriller', 'Crime']]
-    
-    # ПРАВИЛО 3: Романтика имеет приоритет над драмой
-    if 'Romance' in genres:
-        emotions.add('романтическое')
-        genres = [g for g in genres if g != 'Drama']
-    
-    # ПРАВИЛО 4: Обрабатываем остальные жанры
+    # 🔑 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: заполняем множество эмоций
     for genre in genres:
         if genre in genre_to_emotion:
             emotions.add(genre_to_emotion[genre])
-    
-    # ПРАВИЛО 5: Если есть "страшное", убираем "напряжённое"
-    if 'страшное' in emotions and 'напряжённое' in emotions:
-        emotions.remove('напряжённое')
     
     return '|'.join(sorted(emotions)) if emotions else 'нейтральное'
 
@@ -69,4 +50,4 @@ products['emotions'] = products['genres'].apply(genres_to_emotions)
 # Сохраняем обновлённый датасет
 products.to_csv('products_with_emotions.csv', index=False, encoding='utf-8-sig')
 
-print(" Эмоциональная разметка добавлена!")
+print("✅ Эмоциональная разметка добавлена!")

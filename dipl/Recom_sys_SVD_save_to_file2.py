@@ -95,8 +95,8 @@ ind_sort = [i + 1 for i in indices]
 R_sort = [round(ind_avg[i], 1) for i in indices]
 
 # Берём топ-50 для надёжной фильтрации по эмоциям
-ind_sort_max = ind_sort[:100]
-R_sort_max = R_sort[:100]
+ind_sort_max = ind_sort[:200]
+R_sort_max = R_sort[:200]
 print(f'\n[INFO] Топ-10 фильмов по среднему рейтингу (первые 10): {ind_sort_max[:10]}')
 
 # ========== ЗАГРУЗКА ФИЛЬМОВ С ЭМОЦИЯМИ ==========
@@ -153,7 +153,7 @@ for i, movie in enumerate(filtered_movies, 1):
     print(f"   Эмоции: {movie['emotions']}")
 
 # ========= СОХРАНЕНИЕ В ФОРМАТЕ ДЛЯ СЕРВЕРА =========
-TARGET_DIR = Path("D:/123/API/API/data")
+TARGET_DIR = Path("D:/123/API/data")
 TARGET_DIR.mkdir(parents=True, exist_ok=True)
 
 file_path = TARGET_DIR / "result.csv"
