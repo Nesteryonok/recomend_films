@@ -34,7 +34,7 @@ def genres_to_emotions(genres_str):
     genres = [g.strip() for g in genres_str.split('|')]
     emotions = set()
     
-    # 🔑 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: заполняем множество эмоций
+    # заполняем множество эмоций
     for genre in genres:
         if genre in genre_to_emotion:
             emotions.add(genre_to_emotion[genre])
@@ -50,4 +50,4 @@ products['emotions'] = products['genres'].apply(genres_to_emotions)
 # Сохраняем обновлённый датасет
 products.to_csv('products_with_emotions.csv', index=False, encoding='utf-8-sig')
 
-print("✅ Эмоциональная разметка добавлена!")
+print("Эмоциональная разметка добавлена!")

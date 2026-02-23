@@ -28,16 +28,16 @@ app.add_middleware(
 
 # ====== КРИТИЧЕСКИ ВАЖНО: ПРАВИЛЬНЫЕ ПУТИ ======
 # Путь к рекомендательной системе
-RECOM_SCRIPT = Path("D:/123/dipl/Recom_sys_SVD_save_to_file2.py")
+RECOM_SCRIPT = Path("C:/work/recomend_films/dipl/Recom_sys.py")
 
 # Рабочая директория для запуска (где лежат ratings.csv, products_with_emotions.csv)
 RECOM_WORKDIR = RECOM_SCRIPT.parent
 
 # Путь к файлу результатов
-RESULT_FILE = Path("D:/123/API/data/result.csv")
+RESULT_FILE = Path("C:/work/recomend_films/API/data/result.csv")
 
 # Путь к интерпретатору рекомендательной системы
-RECOM_INTERPRETER = Path("D:/123/dipl/venv/Scripts/python.exe")
+RECOM_INTERPRETER = Path("C:/work/recomend_films/dipl/venv/Scripts/python.exe")
 # ==============================================
 
 @app.get("/moods", summary="Список доступных настроений")
@@ -63,7 +63,7 @@ async def get_recommendations(
     Возвращает топ-10 фильмов, соответствующих запрошенному настроению.
     """
     try:
-        print(f"\n🔄 Запуск рекомендательной системы для mood='{mood}'")
+        print(f"\nЗапуск рекомендательной системы для mood='{mood}'")
         print(f"   Скрипт: {RECOM_SCRIPT}")
         print(f"   Рабочая директория: {RECOM_WORKDIR}")
         print(f"   Интерпретатор: {RECOM_INTERPRETER}")
@@ -94,9 +94,9 @@ async def get_recommendations(
         )
         
         # Логирование
-        print(f"\n✅ Стандартный вывод:\n{result.stdout}")
+        print(f"\nСтандартный вывод:\n{result.stdout}")
         if result.stderr.strip():
-            print(f"\n⚠️  Ошибки:\n{result.stderr}")
+            print(f"\n  Ошибки:\n{result.stderr}")
         
         if result.returncode != 0:
             return {
