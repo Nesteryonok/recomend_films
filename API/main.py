@@ -19,7 +19,8 @@ app.add_middleware(
         "http://localhost:3000",   # React (create-react-app)
         "http://localhost:5173",   # React + Vite
         "http://localhost:4173",   # React + Vite (production)
-        "http://localhost:8081"    # React Native
+        "http://localhost:8081",
+        "http://127.0.0.1:5173",    
     ],
     allow_credentials=True,
     allow_methods=["*"],

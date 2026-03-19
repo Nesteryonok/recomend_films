@@ -1,0 +1,147 @@
+.recommendations-screen {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.rec-header {
+  background: #333;
+  padding: 16px;
+  color: #fff;
+}
+
+.back-button {
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.rec-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.moods-container {
+  background: #fff;
+  padding: 12px 8px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  border-bottom: 1px solid #e0e0e0;
+  justify-content: center;
+}
+
+.mood-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px;
+  background: #f0f0f0;
+  border-radius: 20px;
+  min-width: 100px;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.mood-button.active {
+  background: #6C63FF;
+}
+
+.mood-button.active .mood-label {
+  color: #fff;
+}
+
+.mood-emoji {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.mood-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+}
+
+.rec-content {
+  padding: 16px;
+  min-height: calc(100vh - 200px);
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loader,
+.error-emoji,
+.empty-emoji {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.retry-button {
+  background: #6C63FF;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.results-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  max-width: 700px;  /* ← Уменьшили для 1 колонки */
+}
+
+.results-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #333;
+  margin: 0;
+}
+
+.movies-list {
+  display: flex;           /* ← Изменили с grid на flex */
+  flex-direction: column;  /* ← Вертикально в 1 колонку */
+  gap: 12px;               /* ← Отступ между карточками */
+  width: 100%;
+  max-width: 700px;        /* ← Уменьшили ширину для 1 колонки */
+  margin: 0 auto;          /* ← Центрирование */
+}
+
+@media (max-width: 768px) {
+  .movies-list {
+    max-width: 100%;  /* На планшетах на всю ширину */
+  }
+  
+  .moods-container { 
+    padding: 8px 4px; 
+  }
+  
+  .mood-button { 
+    min-width: 80px; 
+    padding: 8px 12px; 
+  }
+}
+
+@media (max-width: 600px) {
+  .movies-list {
+    max-width: 100%;  /* На телефонах на всю ширину */
+  }
+  
+  .rec-content {
+    padding: 12px;  /* Меньше отступы на мобильных */
+  }
+}
