@@ -24,18 +24,23 @@ const HomeScreen = () => {
             Найдите фильм под свое настроение
           </h2>
           <p className="hero-subtitle">
-            Простой способ найти кино, которое идеально совпадет с вашим настроением. 
+            Простой способ найти кино, которое идеально совпадет с вашим настроением.
             Просто выберите эмоцию и получите рекомендацию.
           </p>
-          <button className="hero-button" onClick={() => navigate('/recommendations')}>
-            Подобрать фильм
-          </button>
+          <div className="hero-buttons">
+            <button className="hero-button" onClick={() => navigate('/recommendations')}>
+              Подобрать фильм
+            </button>
+            <button className="hero-button" onClick={() => navigate('/mood-selector')}>
+              Определить эмоцию
+            </button>
+          </div>
         </div>
       </section>
 
       <section className="how-it-works">
         <h2 className="section-title">Как это работает?</h2>
-        
+
         <div className="steps-container">
           <div className="step">
             <div className="film-frame">
@@ -90,14 +95,20 @@ const HomeScreen = () => {
       <section className="features">
         <h2 className="features-title">Ваш идеальный киновечер начинается здесь</h2>
         <p className="features-text">
-         Не можете выбрать фильм?  Мы здесь, чтобы помочь! Наша система подберет фильм именно под ваше текущее настроение.
+          Не можете выбрать фильм?  Мы здесь, чтобы помочь! Наша система подберет фильм именно под ваше текущее настроение.
         </p>
       </section>
 
       <section className="cta-section">
-        <button className="cta-button" onClick={() => navigate('/recommendations')}>
-          Начать подбор →
-        </button>
+        <div className="cta-container">
+          <button className="cta-button primary" onClick={() => navigate('/recommendations')}>
+            <span>Начать подбор</span>
+          </button>
+
+          <button className="cta-button secondary" onClick={() => navigate('/mood-selector')}>
+            <span>Определить эмоцию</span>
+          </button>
+        </div>
       </section>
 
       <footer className="footer">
